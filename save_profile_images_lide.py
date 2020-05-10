@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import InvalidArgumentException
 from selenium.webdriver.firefox.options import Options
 # Imported due to running browser in headless mode (in the background).
 
@@ -149,20 +150,25 @@ if __name__ == '__main__':
 
         user_argument = sys.argv[1]
 
-        browser = browser_setup(firefox_executable_path, user_argument)
+        try:
 
-        load_more(browser)
-        save_images(browser, saved_images_count, skipped_images_count)
+            browser = browser_setup(firefox_executable_path, user_argument)
 
-        browser.close()
-        browser.quit()
+            load_more(browser)
+            save_images(browser, saved_images_count, skipped_images_count)
 
-        print()
-        print('Info: Count of saved images: ' + str(saved_images_count))
-        if saved_images_count == 0:
-            print('Info: There are no images on the profile.')
-        else:
-            print('Info: Count of skipped images: ' + str(skipped_images_count))
+            browser.close()
+            browser.quit()
+
+            print()
+            print('Info: Count of saved images: ' + str(saved_images_count))
+            if saved_images_count == 0:
+                print('Info: There are no images on the profile.')
+            else:
+                print('Info: Count of skipped images: ' + str(skipped_images_count))
+
+        except InvalidArgumentException:
+            print('Info: URL is not valid.')
 
     else:
         print('Info: Wrong amount of URL(s) provided as argument(s). Only 1 argument has to be given.')
