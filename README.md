@@ -1,5 +1,5 @@
 # Save-Profile-Images_lide
-Script process the website "https://www.lide.cz/" which is basically dating website.
+Script process the website "https://www.lide.cz/" which is basically dating website. It was created on OS Windows.
 * Every user has profile with an option to upload images (photos) on his/her profile.
 * Script is supposed to save those images at once.
 
