@@ -6,7 +6,7 @@ Script process the website "https://www.lide.cz/" which is basically dating webs
 The profile of each user works as dynamic website. If profile contains more than certain amount of images, the "Load more" button appears.
 To reveal more images, button needs to be clicked. Button disappears once all images are loaded.
 
-To avoid saving already stored images, script checks images at current working directory.
+To avoid saving already stored images, script checks present images at current working directory and saves the new ones there.
 
 Script uses Selenium to web scrape all necessary information. Browser is always executed in headless mode.
 * To be able to execute the script, the Firefox browser driver needs to be stored in this location "c:\Firefox_GeckoDriver_Win64\geckodriver.exe".
